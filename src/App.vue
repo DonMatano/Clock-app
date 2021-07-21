@@ -1,18 +1,15 @@
 <template>
-  <HelloWorld
-    class="font-inter"
-    msg="Welcome to Your Vue.js + TypeScript App"
-  />
+  <TimeOrganism />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import TimeOrganism from '@atomic/organisms/TimeOrganism.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
+    TimeOrganism,
   },
 });
 </script>
