@@ -1,22 +1,20 @@
-import TimeOrganism from '../components/atomic/organisms/TimeOrganism.vue';
+import ClockApp from '../components/atomic/pages/ClockApp.vue';
 
 export default {
-  title: 'Organisms/TimeOrganism',
-  component: TimeOrganism,
+  title: 'Pages/ClockApp',
+  component: ClockApp,
 };
 
 const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
-  components: { TimeOrganism },
+  components: { ClockApp },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
   template: `
-    <div class="bg-nighttime-mobile p-3">
-      <TimeOrganism v-bind="args" />
-    </div>
+      <ClockApp class="h-screen bg-cover bg-blend-darken" v-bind="args" />
   `,
 });
 

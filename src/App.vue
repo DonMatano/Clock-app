@@ -1,17 +1,22 @@
 <template>
-  <TimeOrganism />
+  <ClockApp class="min-h-full" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TimeOrganism from '@atomic/organisms/TimeOrganism.vue';
+import ClockApp from '@atomic/pages/ClockApp.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    TimeOrganism,
+    ClockApp,
   },
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+html,
+body {
+  min-height: 100vh;
+}
+</style>
