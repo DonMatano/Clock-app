@@ -9,6 +9,7 @@
       py-1
       bg-white
       rounded-3xl
+      hover:text-primary-gray
     "
     @click="$emit('moreLessButtonClicked')"
   >
@@ -16,9 +17,15 @@
       {{ isShowingMoreInfo ? 'LESS' : 'MORE' }}
     </p>
     <IconArrowUp
-      class="arrow transition-transform duration-500 ease-in-out"
+      class="
+        arrow
+        transition-transform
+        duration-500
+        ease-in-out
+        hover:fill-current hover:text-primary-gray
+      "
       :class="{
-        'transform rotate-180': isShowingMoreInfo,
+        'transform rotate-180': !isShowingMoreInfo,
       }"
     />
   </button>
