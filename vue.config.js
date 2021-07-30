@@ -2,6 +2,7 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: '/Clock-app',
   configureWebpack: {
     resolve: {
       alias: {

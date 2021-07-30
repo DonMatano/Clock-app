@@ -24,7 +24,7 @@ export class WorldTimeApi implements GetTimeDataOutput {
   async getTimeData(timeZone: string): Promise<TimeData> {
     const httpService = Dependencies.getInstance().http;
     try {
-      const url = `http://worldtimeapi.org/api/timezone/${timeZone}`;
+      const url = `https://worldtimeapi.org/api/timezone/${timeZone}`;
       const timeDataResult = await httpService.getHttpRequest<Response>(url);
       const timeData = new TimeData();
       timeData.timeZone = timeDataResult.timezone;
