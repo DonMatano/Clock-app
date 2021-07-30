@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light-white h-full py-12 px-6 sm:px-12">
+  <div class="bg-light-white py-12 px-6 sm:px-12">
     <ul
       class="
         text-secondary-black
@@ -17,7 +17,9 @@
         <div class="text-sm leading-7 text-left tracking-widest">
           {{ listItem.title }}
         </div>
-        <div class="font-bold text-xl sm:text-4xl lg:text-6xl">{{ listItem.value }}</div>
+        <div class="font-bold text-xl sm:text-4xl lg:text-6xl">
+          {{ listItem.value }}
+        </div>
       </li>
     </ul>
   </div>
@@ -28,12 +30,30 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'MoreInfoOrganism',
-  setup() {
+  props: {
+    timezone: {
+      type: String,
+      default: '',
+    },
+    dayOfYear: {
+      type: Number,
+      default: 0,
+    },
+    dayOfWeek: {
+      type: Number,
+      default: 0,
+    },
+    weekNumber: {
+      type: Number,
+      default: 0,
+    },
+  },
+  setup(props) {
     const listOfValuesToShow = ref([
-      { title: 'Current timezone', value: 'Europe/London' },
-      { title: 'Day of year', value: 295 },
-      { title: 'Day of week', value: 5 },
-      { title: 'Week number', value: 42 },
+      { title: 'Current timezone', value: props.timezone },
+      { title: 'Day of the year', value: props.dayOfYear },
+      { title: 'Day of the week', value: props.dayOfWeek },
+      { title: 'Week number', value: props.weekNumber },
     ]);
     return { listOfValuesToShow };
   },

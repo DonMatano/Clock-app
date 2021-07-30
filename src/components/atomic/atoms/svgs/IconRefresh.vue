@@ -16,3 +16,14 @@ export default defineComponent({
   name: 'IconRefresh',
 });
 </script>
+
+<style scoped>
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+</style>
