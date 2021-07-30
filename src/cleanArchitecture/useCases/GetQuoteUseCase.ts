@@ -7,9 +7,11 @@ export type getQuoteParam = {
 
 export class GetQuoteUseCase {
   async getQuote(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     params: getQuoteParam = { isQuranSource: false }
   ): Promise<QuotesData> {
+    params.isQuranSource
+      ? Dependencies.setQuoteSourceQuran()
+      : Dependencies.setQuoteSourceQuotable();
     const getQuoteOutput = Dependencies.getInstance().getQuoteOutput;
     try {
       return await getQuoteOutput.getQuote();

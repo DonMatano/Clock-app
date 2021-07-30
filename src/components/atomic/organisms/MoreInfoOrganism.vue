@@ -1,13 +1,11 @@
 <template>
-  <div class="bg-light-white py-12 px-6 sm:px-12">
+  <div
+    class="py-12 px-6 sm:px-12"
+    :class="[isNight ? 'bg-dark' : 'bg-light-white']"
+  >
     <ul
-      class="
-        text-secondary-black
-        uppercase
-        flex flex-col
-        sm:flex-row sm:justify-between
-        flex-wrap
-      "
+      class="uppercase flex flex-col sm:flex-row sm:justify-between flex-wrap"
+      :class="[isNight ? 'text-white' : 'text-secondary-black']"
     >
       <li
         v-for="(listItem, index) in listOfValuesToShow"
@@ -46,6 +44,10 @@ export default defineComponent({
     weekNumber: {
       type: Number,
       default: 0,
+    },
+    isNight: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

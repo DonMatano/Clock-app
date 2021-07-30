@@ -1,12 +1,16 @@
 <template>
   <div class="relative">
+    <button
+      @click="isQuranQuote = !isQuranQuote"
+      class="absolute top-0 right-0 z-30"
+      :class="[isQuranQuote ? 'text-green-600' : 'text-gray-500']"
+    >
+      Q
+    </button>
     <div
       class="
         absolute
         z-10
-        bg-daytime-mobile
-        sm:bg-daytime-tablet
-        lg:bg-daytime-desktop
         left-0
         right-0
         top-0
@@ -15,6 +19,11 @@
         brightness-75
         bg-cover
       "
+      :class="[
+        isNight
+          ? 'bg-nighttime-mobile sm:bg-nighttime-tablet lg:bg-nighttime-desktop'
+          : 'bg-daytime-mobile sm:bg-daytime-tablet lg:bg-daytime-desktop',
+      ]"
     />
     <div
       class="
@@ -73,6 +82,7 @@
             :timezone="timezone"
             :dayOfYear="dayOfYear"
             :dayOfWeek="dayOfWeek"
+            :isNight="isNight"
             :weekNumber="weekNumber"
           />
         </transition>
@@ -89,7 +99,7 @@ import TimeOrganism from '@atomic/organisms/TimeOrganism.vue';
 import MoreLessButton from '@atomic/molecules/MoreLessButton.vue';
 import { GetGeoIpDataUseCase } from '@/cleanArchitecture/useCases/GetGeoIpDataUseCase';
 import { GetTimeDataUseCase } from '@/cleanArchitecture/useCases/GetTimeDataUseCase';
-import { GetQuoteUseCase } from "@/cleanArchitecture/useCases/GetQuoteUseCase";
+import { GetQuoteUseCase } from '@/cleanArchitecture/useCases/GetQuoteUseCase';
 
 export default defineComponent({
   name: 'ClockApp',
@@ -105,6 +115,7 @@ export default defineComponent({
     const isNight = ref(false);
     const isAfternoon = ref(false);
     const isLoadingQuote = ref(false);
+    const isQuranQuote = ref(false);
     const timezoneCode = ref('');
     const city = ref('');
     const countryCode = ref('');
@@ -134,7 +145,9 @@ export default defineComponent({
     };
     const getQuote = async () => {
       isLoadingQuote.value = true;
-      const quoteData = await new GetQuoteUseCase().getQuote();
+      const quoteData = await new GetQuoteUseCase().getQuote({
+        isQuranSource: isQuranQuote.value,
+      });
       quote.value = quoteData.quote;
       author.value = quoteData.author;
       isLoadingQuote.value = false;
@@ -178,6 +191,7 @@ export default defineComponent({
       weekNumber,
       author,
       quote,
+      isQuranQuote,
       getQuote,
     };
   },

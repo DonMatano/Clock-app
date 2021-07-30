@@ -17,7 +17,8 @@ module.exports = {
         'secondary-black': 'hsl(0, 0%, 19%)',
         'light-white': 'rgba(255, 255, 255, 0.99)',
         'light-gray': 'rgba(216, 216, 216, 1)',
-        'primary-gray': 'rgba(151, 151, 151, 1)'
+        'primary-gray': 'rgba(151, 151, 151, 1)',
+        'dark': 'rgba(0, 0, 0, 0.75)',
       },
       backgroundImage: theme => ({
         'daytime-mobile':

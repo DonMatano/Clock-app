@@ -6,6 +6,7 @@ import { GetGeoIpOutput } from './ports/output/GetGeoIpOutput';
 import { GetTimeDataOutput } from './ports/output/GetTimeDataOutput';
 import { GetQuoteOutput } from '@/cleanArchitecture/ports/output/GetQuoteOutput';
 import { QuotableService } from '@/cleanArchitecture/services/QuotableService';
+import { QuranService } from "@/cleanArchitecture/services/QuranService";
 // import { QuranService } from '@/cleanArchitecture/services/QuranService';
 
 export class Dependencies {
@@ -19,12 +20,17 @@ export class Dependencies {
     this.getGeoIpOutput = new FreeGeoIp();
     this.getTimeDataOutput = new WorldTimeApi();
     this.getQuoteOutput = new QuotableService();
-    // this.getQuoteOutput = new QuranService();
   }
   public static getInstance(): Dependencies {
     if (!Dependencies.instance) {
       Dependencies.instance = new Dependencies();
     }
     return Dependencies.instance;
+  }
+  public static setQuoteSourceQuran(): void {
+    Dependencies.instance.getQuoteOutput = new QuranService();
+  }
+  public static setQuoteSourceQuotable(): void {
+    Dependencies.instance.getQuoteOutput = new QuotableService();
   }
 }

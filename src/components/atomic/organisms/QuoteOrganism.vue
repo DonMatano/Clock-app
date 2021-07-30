@@ -9,7 +9,7 @@
         <p class="font-bold mt-3">{{ author }}</p>
       </div>
       <button
-        class="p-0 h-1 w-1/12 flex"
+        class="p-0 h-1 w-1/12 ml-2 flex"
         :disabled="isLoadingQuote"
         @click="$emit('refreshButtonClicked')"
       >
