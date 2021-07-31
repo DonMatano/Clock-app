@@ -133,7 +133,7 @@ export default defineComponent({
       const date = new Date();
       const hours = date.getHours();
       isNight.value = hours >= 18 || hours < 5;
-      isAfternoon.value = hours >= 12 || hours < 18;
+      isAfternoon.value = hours >= 12 && hours < 18;
       const minutes = date.getMinutes();
       const newTime = `${checkTimeValue(hours)}.${checkTimeValue(minutes)}`;
       if (time.value !== newTime) time.value = newTime;
